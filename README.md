@@ -2,7 +2,7 @@
 ### Learning Transferable Visual Models From Natural Language Supervision
 ![Clip](https://github.com/iljf/Assignment_CLIP/assets/94291960/78e0f6a9-0a76-4dd1-a3cf-71d86e73770a)
 CLIP: Contrastive Language-Image Pre-training
-
+CLIP learns a multi-modal embedding space by jointly training an image encoder and text encoder to maximize the cosine similarity of the image and text embeddings of the N real pairs in the batch while minimizing the cosine similarity of the embeddings of the N²-N incorrect pairings.
 https://arxiv.org/pdf/2103.00020.pdf
 
 ### Pseudocode
