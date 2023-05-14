@@ -1,6 +1,8 @@
 # Introduction
-## Learning Transferable Visual Models From Natural Language Supervision
+### Learning Transferable Visual Models From Natural Language Supervision
 ![Clip](https://github.com/iljf/Assignment_CLIP/assets/94291960/78e0f6a9-0a76-4dd1-a3cf-71d86e73770a)
+CLIP: Contrastive Language-Image Pre-training
+
 https://arxiv.org/pdf/2103.00020.pdf
 
 ### Pseudocode
@@ -30,3 +32,9 @@ loss_i = cross_entropy_loss(logits, labels, axis=0)
 loss_t = cross_entropy_loss(logits, labels, axis=1)
 loss   = (loss_i + loss_t) /2
 ```
+- given a batch of N (image, text) pairs
+- predict which of the N x N possible pairs across a batch actually occured
+- CLIP learns the multi-modal embedding space by jointly training an image and text encoder to:
+    - maximize the cosine similarity of the N real embedding pairs
+    - minimize the cosine similarity of the N^2 - N incorrect embedding pairs
+- optimize a symmetric cross entropy loss over the similarity scores
