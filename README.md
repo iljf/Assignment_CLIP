@@ -50,4 +50,4 @@ loss   = (loss_i + loss_t) /2
     - minimize the cosine similarity of the N^2 - N incorrect embedding pairs
 - optimize a symmetric cross entropy loss over the similarity scores
 
-#Installation
+# Installation
