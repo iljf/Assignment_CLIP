@@ -4,6 +4,12 @@
 CLIP: Contrastive Language-Image Pre-training
 
 Unlike traditional models that are typically trained on either text or image data, Clip is designed to understand and generate meaningful representations of both text and images simultaneously. The underlying idea behind Clip is to leverage large-scale datasets containing image and text pairs to learn a shared embedding space, where similar images and their corresponding descriptions are placed close to each other.
+- CLIP learns a multi-modal embedding space by jointly training an image encoder and text encoder to maximize the cosine similarity of the image and text embeddings of the N real pairs in the batch while minimizing the cosine similarity of the embeddings of the N²-N incorrect pairings.
+- CLIP is trained from scratched, and does not use any non-linear projection layers, instead only a linear projection is used to map from each encoder’s representation to the multi-modal embedding space.
+- Image encoder : 5 ResNets and 3 ViTs with some modifications
+- Text encoder  : Transformer as a base size, 63M-parameter 12-layer 512-wide model with 8 attention heads
+- 32,768 Minibatch size
+- Efforts to save memory and time (ex: mixed precision)
 https://arxiv.org/pdf/2103.00020.pdf
 
 ### Pseudocode
