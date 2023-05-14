@@ -1,16 +1,20 @@
 # Introduction
-### Learning Transferable Visual Models From Natural Language Supervision
+### Learning Transferable Visual Models From Natural Language Supervision, CLIP
 ![Clip](https://github.com/iljf/Assignment_CLIP/assets/94291960/78e0f6a9-0a76-4dd1-a3cf-71d86e73770a)
 CLIP: Contrastive Language-Image Pre-training
+
+https://arxiv.org/pdf/2103.00020.pdf
+
+Contrastive Language-Image Pre-Training (CLIP) is proposed to have the pre-training task of predicting which caption to learn image representations from scratch on a dataset of 400 million (image, text) pairs.
 
 Unlike traditional models that are typically trained on either text or image data, Clip is designed to understand and generate meaningful representations of both text and images simultaneously. The underlying idea behind Clip is to leverage large-scale datasets containing image and text pairs to learn a shared embedding space, where similar images and their corresponding descriptions are placed close to each other.
 - CLIP learns a multi-modal embedding space by jointly training an image encoder and text encoder to maximize the cosine similarity of the image and text embeddings of the N real pairs in the batch while minimizing the cosine similarity of the embeddings of the N²-N incorrect pairings.
 - CLIP is trained from scratched, and does not use any non-linear projection layers, instead only a linear projection is used to map from each encoder’s representation to the multi-modal embedding space.
 - Image encoder : 5 ResNets and 3 ViTs with some modifications
 - Text encoder  : Transformer as a base size, 63M-parameter 12-layer 512-wide model with 8 attention heads
-- 32,768 Minibatch size
-- Efforts to save memory and time (ex: mixed precision)
-https://arxiv.org/pdf/2103.00020.pdf
+- All models are trained for 32 epochs. A very large minibatch size of 32,768 is used. Mixed-Precision Training. The calculation of embedding similarities was also sharded with individual GPUs
+ 
+The resulting model can then be used for a wide range of tasks that require understanding and processing of both images and text. For example, given an image, Clip can generate textual descriptions or classify it into categories. Conversely, given a text prompt, Clip can retrieve relevant images or rank a set of images based on their relevance to the text.
 
 ### Pseudocode
 ```
@@ -45,3 +49,5 @@ loss   = (loss_i + loss_t) /2
     - maximize the cosine similarity of the N real embedding pairs
     - minimize the cosine similarity of the N^2 - N incorrect embedding pairs
 - optimize a symmetric cross entropy loss over the similarity scores
+
+#Installation
