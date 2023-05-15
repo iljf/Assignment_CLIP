@@ -53,5 +53,5 @@ loss   = (loss_i + loss_t) /2
 - optimize a symmetric cross entropy loss over the similarity scores
 
 # Installation
-- coded in Window os, python 3.9
+- written in Window os, python 3.9
 - other requirements are in reqiurments.txt
