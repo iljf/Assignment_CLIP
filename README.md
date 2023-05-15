@@ -55,3 +55,6 @@ loss   = (loss_i + loss_t) /2
 # Installation
 - written in Window os, python 3.9
 - other requirements are in reqiurements.txt
+```
+pip install -r requirements.txt
+```
