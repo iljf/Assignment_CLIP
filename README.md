@@ -44,29 +44,7 @@ loss_i = cross_entropy_loss(logits, labels, axis=0)
 loss_t = cross_entropy_loss(logits, labels, axis=1)
 loss   = (loss_i + loss_t) /2
 ```
-```
-    def forward(self, batch):
-        # Getting Image and Text Features
-        image_features = self.image_encoder(batch["image"])
-        text_features = self.text_encoder(
-            input_ids=batch["input_ids"], attention_mask=batch["attention_mask"]
-        )
-        # Getting Image and Text Embeddings (with same dimension)
-        image_embeddings = self.image_projection(image_features)
-        text_embeddings = self.text_projection(text_features)
-
-        # Calculating the Loss
-        logits = (text_embeddings @ image_embeddings.T) / self.temperature
-        images_similarity = image_embeddings @ image_embeddings.T
-        texts_similarity = text_embeddings @ text_embeddings.T
-        targets = F.softmax(
-            (images_similarity + texts_similarity) / 2 * self.temperature, dim=-1
-        )
-        texts_loss = cross_entropy(logits, targets, reduction='none')
-        images_loss = cross_entropy(logits.T, targets.T, reduction='none')
-        loss =  (images_loss + texts_loss) / 2.0 # shape: (batch_size)
-        return loss.mean()
-```
+*clip.py is coded based on psudocode
 - given a batch of N (image, text) pairs
 - predict which of the N x N possible pairs across a batch actually occured
 - CLIP learns the multi-modal embedding space by jointly training an image and text encoder to:
