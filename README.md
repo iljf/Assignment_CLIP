@@ -44,7 +44,7 @@ loss_i = cross_entropy_loss(logits, labels, axis=0)
 loss_t = cross_entropy_loss(logits, labels, axis=1)
 loss   = (loss_i + loss_t) /2
 ```
-*clip.py is coded based on psudocode
+*clip.py is coded based on pseudocode
 - given a batch of N (image, text) pairs
 - predict which of the N x N possible pairs across a batch actually occured
 - CLIP learns the multi-modal embedding space by jointly training an image and text encoder to:
@@ -53,3 +53,5 @@ loss   = (loss_i + loss_t) /2
 - optimize a symmetric cross entropy loss over the similarity scores
 
 # Installation
+- coded in Window os, python 3.9
+- other requirements are in reqiurments.txt
